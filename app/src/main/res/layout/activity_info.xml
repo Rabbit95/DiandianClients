@@ -75,4 +75,12 @@
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
+    <Button
+        android:id="@+id/id_info_determine"
+        android:layout_marginTop="5dp"
+        android:text="确定"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_light_blue"/>
 </LinearLayout>

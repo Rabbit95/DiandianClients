@@ -10,9 +10,9 @@ import java.util.List;
 public class ListUtils {
     public static List<Cart> carts = new ArrayList<>();
     public static List<Order> orders = new ArrayList<>();
-    public static User user = new User();
-//    static ListUtils listUtils = new ListUtils();
-//    private ListUtils(){}
+    public static List<User> users = new ArrayList<>();
+    public static String name;
+    public static String phone;
 
     public void add(Cart cart){
         carts.add(cart);
@@ -36,4 +36,13 @@ public class ListUtils {
     public static String getONumber(int i){
         return orders.get(i).getONumber();
     }
+
+    public static void uadd(User user){
+        users.add(user);
+    }
+    public static void uc(){
+        users.clear();
+    }
+
+
 }

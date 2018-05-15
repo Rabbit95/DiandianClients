@@ -7,7 +7,6 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -21,11 +20,11 @@ import com.avos.avoscloud.FindCallback;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.administrator.diandianclient.Adapter.SectionAdapter;
-import com.example.administrator.diandianclient.data.MySection;
 import com.example.administrator.diandianclient.R;
-import com.example.administrator.diandianclient.data.Video;
 import com.example.administrator.diandianclient.data.Cart;
 import com.example.administrator.diandianclient.data.ListUtils;
+import com.example.administrator.diandianclient.data.MySection;
+import com.example.administrator.diandianclient.data.Video;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -184,9 +183,10 @@ public class MainActivity extends AppCompatActivity {
     private void startMyActivity(){
         AVUser currentUser = AVUser.getCurrentUser();
         if (currentUser != null) {
-            ListUtils.user.setUserNmae(AVUser.getCurrentUser().getString("name"));
-            ListUtils.user.setPhoneNumber(AVUser.getCurrentUser().getString("phoneNumber"));
-            Log.d("uinfo", ListUtils.user.getUserNmae()+ListUtils.user.getPhoneNumber());
+//            ListUtils.user.get(0).setUserNmae(AVUser.getCurrentUser().getString("name"));
+//            ListUtils.user.get(0).setPhoneNumber(AVUser.getCurrentUser().getString("phoneNumber"));
+
+//            Log.d("uinfo", ListUtils.user.get(0).getUserNmae()+ListUtils.user.get(0).getPhoneNumber());
             //用户缓存不为空，跳转到个人中心
             Intent intent = new Intent();
             intent.setClass(MainActivity.this,MyActivity.class);

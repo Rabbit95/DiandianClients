@@ -7,7 +7,10 @@ package com.example.administrator.diandianclient.data;
 public class User {
     private String userNmae;
     private String phoneNumber;
-
+    public User(String name,String phone){
+        this.userNmae=name;
+        this.phoneNumber=phone;
+    }
     public String getUserNmae() {
         return userNmae;
     }

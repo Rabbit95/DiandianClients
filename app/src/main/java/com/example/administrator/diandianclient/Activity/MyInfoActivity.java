@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -22,21 +23,22 @@ import com.example.administrator.diandianclient.data.ListUtils;
 public class MyInfoActivity extends AppCompatActivity {
     private EditText name,phoneNumber;
     private ImageView back;
+    private Button button;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        ListUtils.user.setUserNmae(AVUser.getCurrentUser().getString("name"));
-        ListUtils.user.setPhoneNumber(AVUser.getCurrentUser().getString("phoneNumber"));
         initView();
     }
     public void initView(){
+        button = findViewById(R.id.id_info_determine);
         name = findViewById(R.id.id_info_name);
         phoneNumber = findViewById(R.id.id_info_phoneNumber);
-        name.setText(ListUtils.user.getUserNmae());
-        phoneNumber.setText(ListUtils.user.getPhoneNumber());
-        back = findViewById(R.id.id_info_back);
-        back.setOnClickListener(new View.OnClickListener() {
+
+        name.setText(ListUtils.name);
+        phoneNumber.setText(ListUtils.phone);
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!(TextUtils.isEmpty(name.getText())) && !(TextUtils.isEmpty(phoneNumber.getText()))){
@@ -45,12 +47,12 @@ public class MyInfoActivity extends AppCompatActivity {
                         public void done(AVException e) {
                             AVUser.getCurrentUser().put("name", name.getText());
                             AVUser.getCurrentUser().put("phoneNumber", phoneNumber.getText());
+                            ListUtils.name=name.getText().toString();
+                            Log.d("user",ListUtils.name+"");
+                            ListUtils.phone=phoneNumber.getText().toString();
                             AVUser.getCurrentUser().saveInBackground(new SaveCallback() {
                                 @Override
                                 public void done(AVException e) {
-                                    ListUtils.user.setUserNmae(name.getText().toString());
-                                    ListUtils.user.setPhoneNumber(phoneNumber.getText().toString());
-                                    Log.d("user",ListUtils.user.getUserNmae()+ListUtils.user.getPhoneNumber());
                                     if(e != null) {
                                         Log.d("infoe", e.toString());
                                     }
@@ -60,6 +62,13 @@ public class MyInfoActivity extends AppCompatActivity {
                         }
                     });
                 }
+            }
+        });
+        back = findViewById(R.id.id_info_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              finish();
             }
         });
 

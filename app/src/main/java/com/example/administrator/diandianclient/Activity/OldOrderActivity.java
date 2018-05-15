@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,7 @@ public class OldOrderActivity extends AppCompatActivity {
     private TextView OTPrice,ONumber,name,phone,OSNumber;
     private Button cancel;
     private EditText editText;
+    private ImageView back;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,13 @@ public class OldOrderActivity extends AppCompatActivity {
         initView();
     }
     public void initView(){
+        back = findViewById(R.id.id_oldorder_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         editText = findViewById(R.id.id_oldorder_eva);
         linearLayout = findViewById(R.id.id_evaluation_ll);
         OSNumber = findViewById(R.id.id_salt);
@@ -135,8 +144,8 @@ public class OldOrderActivity extends AppCompatActivity {
         }
         name = findViewById(R.id.id_oldorder_name);
         phone = findViewById(R.id.id_oldorder_phone);
-        name.setText(ListUtils.user.getUserNmae());
-        phone.setText(ListUtils.user.getPhoneNumber());
+        name.setText(ListUtils.name);
+        phone.setText(ListUtils.phone);
         OSNumber.setText(ListUtils.orders.get(position).getOSNumber());
         OTPrice = findViewById(R.id.id_oldorder_Tprice);
         ONumber = findViewById(R.id.id_oldorder_ONumber);

@@ -87,8 +87,8 @@ public class OrderActivity extends AppCompatActivity {
                         final AVObject object = new AVObject("Order");
                         object.put("ONumber", format+(int)(Math.random()*1000+1));
                         object.put("UserID", AVUser.getCurrentUser().getUsername());
-                        object.put("UserName",ListUtils.user.getUserNmae());
-                        object.put("phoneNumber",ListUtils.user.getPhoneNumber());
+                        object.put("UserName",ListUtils.name);
+                        object.put("phoneNumber",ListUtils.phone);
                         String OContent = new String();
                         for (int i = 0; i < ListUtils.carts.size(); i++) {
                             OContent+=ListUtils.carts.get(i).getName()+":"+ListUtils.carts.get(i).getNumber()+",";
@@ -137,9 +137,9 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
         nameView = findViewById(R.id.id_order_name);
-        nameView.setText(ListUtils.user.getUserNmae());
+        nameView.setText(ListUtils.name);
         phoneView = findViewById(R.id.id_order_phone);
-        phoneView.setText(ListUtils.user.getPhoneNumber());
+        phoneView.setText(ListUtils.phone);
         totalView = findViewById(R.id.id_order_Tprice);
         totalView.setText(String.valueOf(total)+"元");
         recyclerView = findViewById(R.id.id_order_rv);

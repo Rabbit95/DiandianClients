@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.avos.avoscloud.AVUser;
 import com.example.administrator.diandianclient.Adapter.CarAdapter;
 import com.example.administrator.diandianclient.R;
 import com.example.administrator.diandianclient.data.ListUtils;
@@ -42,8 +41,6 @@ public class CartActivity extends AppCompatActivity {
         initView();
     }
     public void initView(){
-        ListUtils.user.setUserNmae(AVUser.getCurrentUser().getString("name"));
-        ListUtils.user.setPhoneNumber(AVUser.getCurrentUser().getString("phoneNumber"));
         total_tv = findViewById(R.id.id_cart_total);
         settlement = findViewById(R.id.id_cart_settlement);
         if(ListUtils.carts.size()!=0) {
@@ -52,7 +49,7 @@ public class CartActivity extends AppCompatActivity {
         settlement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ListUtils.user.getUserNmae() == null || ListUtils.user.getPhoneNumber() == null){
+                if(ListUtils.name == null || ListUtils.phone == null){
                     Toasty.error(CartActivity.this,"信息不完善，请在个人中心完善信息", Toast.LENGTH_LONG).show();
                 }else {
                     Intent intent = new Intent();

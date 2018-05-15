@@ -21,6 +21,7 @@ import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.RequestPasswordResetCallback;
 import com.example.administrator.diandianclient.Adapter.RecyclerAdapter;
 import com.example.administrator.diandianclient.R;
+import com.example.administrator.diandianclient.data.ListUtils;
 
 import es.dmoral.toasty.Toasty;
 
@@ -76,6 +77,8 @@ public class MyActivity extends AppCompatActivity {
         });
     }
     public void userOut(){
+        ListUtils.name=null;
+        ListUtils.phone=null;
         AVUser.logOut();// 清除缓存用户对象
         AVUser currentUser = AVUser.getCurrentUser();// 现在的 currentUser 是 null 了
         Toasty.info(MyActivity.this,"登陆退出", Toast.LENGTH_LONG).show();
