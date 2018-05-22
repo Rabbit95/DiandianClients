@@ -122,6 +122,7 @@ public class OrderActivity extends AppCompatActivity {
                                         Toasty.info(OrderActivity.this,"支付成功，等待送达",Toast.LENGTH_LONG).show();
                                         ListUtils.carts.clear();
                                         Intent intent = new Intent();
+                                        intent.putExtra("total",total);
                                         intent.setClass(OrderActivity.this,PaySuccessActivity.class);
                                         startActivity(intent);
                                         finish();
@@ -131,7 +132,11 @@ public class OrderActivity extends AppCompatActivity {
                         });
                         break;
                     case R.id.id_order_wbox:
-                        Toasty.error(OrderActivity.this,"支付失败，重新支付", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent();
+                        intent.putExtra("total",total);
+                        intent.setClass(OrderActivity.this,PayFailed.class);
+                        startActivity(intent);
+                        finish();
                         break;
                 }
             }

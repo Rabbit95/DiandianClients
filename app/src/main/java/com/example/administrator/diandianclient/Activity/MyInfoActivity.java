@@ -29,6 +29,13 @@ public class MyInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         initView();
+        if(AVUser.getCurrentUser().getString("name")!=null){
+            name.setText(AVUser.getCurrentUser().getString("name"));
+            phoneNumber.setText(AVUser.getCurrentUser().getString("phoneNumber"));
+        }else {
+            name.setText(ListUtils.name);
+            phoneNumber.setText(ListUtils.phone);
+        }
     }
     public void initView(){
         button = findViewById(R.id.id_info_determine);

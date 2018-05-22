@@ -28,6 +28,7 @@
         <activity android:name=".Activity.OldOrderActivity"></activity>
         <activity android:name=".Activity.WEBViewActivity"></activity>
         <activity android:name=".Activity.PaySuccessActivity"></activity>
+        <activity android:name=".Activity.PayFailed"></activity>
     </application>
 
 

@@ -188,6 +188,8 @@ public class MainActivity extends AppCompatActivity {
 
 //            Log.d("uinfo", ListUtils.user.get(0).getUserNmae()+ListUtils.user.get(0).getPhoneNumber());
             //用户缓存不为空，跳转到个人中心
+            ListUtils.name=AVUser.getCurrentUser().getString("name");
+            ListUtils.phone=AVUser.getCurrentUser().getString("phoneNumber");
             Intent intent = new Intent();
             intent.setClass(MainActivity.this,MyActivity.class);
             startActivity(intent);
